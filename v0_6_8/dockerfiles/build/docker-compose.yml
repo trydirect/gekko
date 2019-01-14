@@ -1,10 +1,8 @@
 gekko:
     image: trydirect/gekko:latest
     build: .
-    container_name: gekko
     ports:
         - "3000:3000"
     command: ['bash', '-c', 'node gekko --ui']
     volumes:
-        - ./src:/var/www/html
         - /var/www/html

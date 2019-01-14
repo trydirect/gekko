@@ -1,4 +1,3 @@
-#FROM node:6-slim
 FROM node:8.15.0-slim
 
 RUN apt-get -qq update && apt-get install -y build-essential python curl git unzip
