@@ -1,0 +1,29 @@
+version: "2"
+services:
+  gekko:
+      image: trydirect/gekko:latest
+      build: .
+      container_name: gekko
+      ports:
+          - "3000:3000"
+      command: ['bash', '-c', 'node gekko --ui']
+      volumes:
+          - ./src:/var/www/html
+          - /var/www/html
+
+  nginx:
+    image: ${REGISTRY}optimum/nginx-le:stable
+    container_name: nginx
+    env_file: .env
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./configs/nginx/site.conf:/etc/nginx/sites-available/default
+      - ./configs/supervisord/nginx.conf:/etc/supervisor/conf.d/nginx.conf
+    links:
+      - gekko
+    depends_on:
+      - gekko
+    entrypoint: /usr/bin/supervisord -c /etc/supervisor/supervisord.conf -n
+
