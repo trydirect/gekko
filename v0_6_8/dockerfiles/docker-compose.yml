@@ -4,6 +4,7 @@ services:
       image: trydirect/gekko:latest
       build: .
       command: ['bash', '-c', 'node gekko --ui']
+      #entrypoint: /usr/bin/supervisord -c /etc/supervisor/supervisord.conf -n
       volumes:
           #- ./src:/var/www/html
           - ./configs/gekko/config.js:/var/www/html/web/vue/dist/UIconfig.js
