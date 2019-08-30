@@ -10,6 +10,8 @@ env:
 services:
 - docker
 before_install:
+#- sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 6B05F25D762E3157
+- sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 762E3157
 - sudo apt-get update
 - docker-compose --version
 - pip install docker-compose --upgrade

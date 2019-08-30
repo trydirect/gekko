@@ -1,7 +1,7 @@
 version: "2"
 services:
   gekko:
-      image: trydirect/gekko:latest
+      image: ${REGISTRY}trydirect/gekko:latest
       build: .
       command: ['bash', '-c', 'node gekko --ui']
       #entrypoint: /usr/bin/supervisord -c /etc/supervisor/supervisord.conf -n
@@ -13,7 +13,7 @@ services:
           - "3000:3000"
 
   nginx:
-    image: ${REGISTRY}optimum/nginx-le:stable
+    image: ${REGISTRY}trydirect/nginx:latest
     env_file: .env
     ports:
       - "80:80"
