@@ -15,7 +15,7 @@ before_install:
 - pip install docker-compose --upgrade
 - docker-compose --version
 install:
-- cd v0_6_8
+- cd v0_6_8/dockerfiles
 - docker-compose -f docker-compose.yml build
 - docker-compose -f docker-compose.yml up -d
 - docker-compose ps
@@ -31,7 +31,7 @@ notifications:
     rooms:
     - optimum-team:GycletOWK4Kt95GktwYwfUMp#build
 after_success:
-- cd v0_6_8
+- cd v0_6_8/dockerfiles
 - echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
 - docker-compose -f docker-compose-build.yml images
 - docker push trydirect/gekko:0.6.8
