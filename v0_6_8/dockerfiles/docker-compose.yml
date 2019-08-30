@@ -2,7 +2,7 @@ version: "2"
 services:
   gekko:
       image: ${REGISTRY}trydirect/gekko:latest
-      build: .
+      build: ./build
       command: ['bash', '-c', 'node gekko --ui']
       #entrypoint: /usr/bin/supervisord -c /etc/supervisor/supervisord.conf -n
       volumes:
