@@ -2,6 +2,7 @@ version: "2"
 services:
   gekko:
       image: ${REGISTRY}trydirect/gekko:latest
+      container_name: gekko
       build: ./build
       command: ['bash', '-c', 'node gekko --ui']
       #entrypoint: /usr/bin/supervisord -c /etc/supervisor/supervisord.conf -n
@@ -14,6 +15,7 @@ services:
 
   nginx:
     image: ${REGISTRY}trydirect/nginx:latest
+    container_name: gekko_nginx
     env_file: .env
     ports:
       - "80:80"

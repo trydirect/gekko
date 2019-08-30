@@ -14,7 +14,7 @@ for c in client.containers.list():
         print(c.logs())
 
 # NGINX
-nginx = client.containers.get('nginx')
+nginx = client.containers.get('gekko_nginx')
 nginx_cfg = nginx.exec_run("/usr/sbin/nginx -T")
 assert nginx.status == 'running'
 print(nginx_cfg.output.decode())
